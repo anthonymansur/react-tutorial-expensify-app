@@ -67,3 +67,14 @@
   expect(state).toEqual(expenses);
  });
 
+ test('should set expenses', () => {
+// dispatch an action 
+// expect all the expenses you add in to be all that are inside state
+// remove any initial ones located
+  const action = {
+    type: 'SET_EXPENSES',
+    expenses: [expenses[1]]
+  }; 
+  const state = expensesReducer(expenses, action);
+  expect(state).toEqual([expenses[1]]);
+ });
