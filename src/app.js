@@ -30,19 +30,14 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('Logging in');
     store.dispatch(login(user.uid));
-    console.log('Logging in');
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
-      console.log('Logging in');
-
       if (history.location.pathname === '/') {
         history.push('/dashboard');
       }
     });
   } else {
-    console.log('Logging out');
     store.dispatch(logout());
     renderApp();
     history.push('/');
